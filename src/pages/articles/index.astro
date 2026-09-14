@@ -1,0 +1,41 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+const coll = "articles" as any;
+const posts = (await getCollection(coll)).filter(p=>!p.data.draft).sort((a,b)=> b.data.date.valueOf()-a.data.date.valueOf());
+const titles: Record<string,string> = {
+  articles: "Articles",
+  guides: "Guides",
+  research: "Research",
+  linux: "Linux",
+  writeups: "Labs / Writeups",
+  games: "Cyber x Games",
+  projects: "Projects",
+};
+const descs: Record<string,string> = {
+  articles: "Fundamentos, tecnicas y notas de estudio.",
+  guides: "Guias paso a paso para implementar y asegurar.",
+  research: "Investigacion, analisis y CVEs.",
+  linux: "Terminal, administracion y hardening.",
+  writeups: "Writeups de Hack The Box, TryHackMe, PortSwigger y CTFs.",
+  games: "Videojuegos analizados desde la optica de cybersecurity.",
+  projects: "Proyectos, labs y builds documentados.",
+};
+---
+
+<MainLayout title={`${titles[coll]} — BL4CKJACKHM`} description={descs[coll]}>
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-10">
+    <h1 data-i18n="collection.articles" class="text-3xl font-bold tracking-tight text-white">{titles[coll]}</h1>
+    <p data-i18n="collectionDesc.articles" class="mt-2 text-sm text-[#A1A1AA]">{descs[coll]}</p>
+    {posts.length === 0 ? (
+      <div class="mt-8 rounded-xl border border-[#2C2C2E] bg-[#111113] p-8 text-center"><p class="text-sm font-medium text-white">En construcción</p><p class="mt-1 text-xs text-[#A1A1AA]">Contenido próximamente. Solo se muestra material real y escrito por BL4CKJACKHM.</p></div>
+    ) : (
+      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {posts.map((p) => (
+          <ArticleCard title={p.data.title} description={p.data.description} date={p.data.date} tags={p.data.tags} href={`/${coll}/${p.id.replace(/\.mdx?$/, "")}`} collection={coll} />
+        ))}
+      </div>
+    )}
+  </section>
+</MainLayout>

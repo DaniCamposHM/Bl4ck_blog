@@ -1,0 +1,127 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+
+const all = await Promise.all([
+  getCollection('articles'),
+  getCollection('guides'),
+  getCollection('research'),
+  getCollection('writeups'),
+  getCollection('linux'),
+  getCollection('games'),
+  getCollection('projects'),
+]);
+
+const posts = all.flat()
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 12);
+---
+
+<MainLayout title="BL4CKJACKHM — Blog de Cybersecurity" description="Investigacion, guias y writeups de cybersecurity. Aprender en publico.">
+  <!-- Hero -->
+  <section class="border-b border-[#2C2C2E] bg-gradient-to-b from-[#111113] to-[#030303]">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16">
+      <p data-i18n="hero.subtitle" class="font-mono text-xs tracking-widest text-[#7FA6A0]">DARK EDITORIAL · TECHNICAL · MINIMAL</p>
+      <h1 class="mt-3 text-4xl sm:text-5xl font-bold tracking-tight text-white leading-none">
+        <span data-i18n="hero.title1">Aprender.</span><br />
+        <span data-i18n="hero.title2" class="text-[#7FA6A0]">Practicar.</span><br />
+        <span data-i18n="hero.title3">Documentar.</span>
+      </h1>
+      <p data-i18n="hero.desc" class="mt-4 max-w-xl text-base leading-relaxed text-[#A1A1AA]">
+        Blog de cybersecurity de BL4CKJACKHM. Artículos técnicos, guías paso a paso, writeups de labs y la intersección entre videojuegos y seguridad. Sin humo, con evidencia.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="/articles" data-i18n="hero.cta1" class="rounded-md bg-[#7FA6A0] px-5 py-2.5 text-sm font-semibold text-[#030303] hover:bg-[#8fbab3] transition">Explorar artículos</a>
+        <a href="/about" data-i18n="hero.cta2" class="rounded-md border border-[#2C2C2E] bg-[#111113] px-5 py-2.5 text-sm font-medium text-white hover:bg-[#1a1a1a] transition">Sobre mí</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest -->
+  <section class="mx-auto max-w-6xl px-4 sm:px-6 py-10">
+    <div class="flex items-center justify-between">
+      <h2 data-i18n="latest.title" class="text-lg font-semibold text-white">Últimas publicaciones</h2>
+      <a href="/search" data-i18n="latest.search" class="text-xs text-[#7FA6A0] hover:underline">Buscar →</a>
+    </div>
+
+    {posts.length === 0 ? (
+      <p data-i18n="latest.empty" class="mt-6 text-sm text-[#A1A1AA]">Aún no hay contenido. Crea tu primer .md en <code class="text-[#7FA6A0]">src/content/</code>.</p>
+    ) : (
+      <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {posts.map((p) => (
+          <ArticleCard
+            title={p.data.title}
+            description={p.data.description}
+            date={p.data.date}
+            tags={p.data.tags}
+            href={`/${p.collection}/${p.id.replace(/\.mdx?$/, '')}`}
+            collection={p.collection}
+          />
+        ))}
+      </div>
+    )}
+
+    <!-- Sections: Híbrido — 2 con contenido normal, 5 próximamente atenuadas -->
+    <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <a href="/articles" class="rounded-xl border border-[#2C2C2E] bg-[#111113] p-4 hover:border-[#7FA6A0]/30 hover:bg-[#1a1a1a] transition">
+        <div class="flex items-center justify-between">
+          <p data-i18n="sections.articles.label" class="text-sm font-semibold text-white">Artículos</p>
+          <span class="h-2 w-2 rounded-full bg-[#7FA6A0]"></span>
+        </div>
+        <p data-i18n="sections.articles.desc" class="mt-1 text-xs text-[#A1A1AA]">Fundamentos y técnicas</p>
+      </a>
+      <a href="/guides" class="rounded-xl border border-[#2C2C2E] bg-[#111113] p-4 hover:border-[#7FA6A0]/30 hover:bg-[#1a1a1a] transition">
+        <div class="flex items-center justify-between">
+          <p data-i18n="sections.guides.label" class="text-sm font-semibold text-white">Guías</p>
+          <span class="h-2 w-2 rounded-full bg-[#7FA6A0]"></span>
+        </div>
+        <p data-i18n="sections.guides.desc" class="mt-1 text-xs text-[#A1A1AA]">Paso a paso</p>
+      </a>
+      <!-- Próximamente: opacity-60, badge, sin hover teal -->
+      <a href="/writeups" class="rounded-xl border border-[#2C2C2E] bg-[#111113]/60 p-4 opacity-60 hover:bg-[#1a1a1a]/60 transition">
+        <div class="flex items-center justify-between">
+          <p data-i18n="sections.writeups.label" class="text-sm font-semibold text-white">Writeups</p>
+          <span data-i18n="nav.soon" class="rounded-full bg-[#DF2531]/10 border border-[#DF2531]/20 px-2 py-0.5 text-[10px] text-[#DF2531]">Próximamente</span>
+        </div>
+        <p data-i18n="sections.writeups.desc" class="mt-1 text-xs text-[#A1A1AA]">HTB, THM, CTFs</p>
+      </a>
+      <a href="/research" class="rounded-xl border border-[#2C2C2E] bg-[#111113]/60 p-4 opacity-60 hover:bg-[#1a1a1a]/60 transition">
+        <div class="flex items-center justify-between">
+          <p data-i18n="sections.research.label" class="text-sm font-semibold text-white">Investigación</p>
+          <span data-i18n="nav.soon" class="rounded-full bg-[#DF2531]/10 border border-[#DF2531]/20 px-2 py-0.5 text-[10px] text-[#DF2531]">Próximamente</span>
+        </div>
+        <p data-i18n="sections.research.desc" class="mt-1 text-xs text-[#A1A1AA]">Análisis y CVEs</p>
+      </a>
+      <a href="/linux" class="rounded-xl border border-[#2C2C2E] bg-[#111113]/60 p-4 opacity-60 hover:bg-[#1a1a1a]/60 transition">
+        <div class="flex items-center justify-between">
+          <p data-i18n="sections.linux.label" class="text-sm font-semibold text-white">Linux</p>
+          <span data-i18n="nav.soon" class="rounded-full bg-[#DF2531]/10 border border-[#DF2531]/20 px-2 py-0.5 text-[10px] text-[#DF2531]">Próximamente</span>
+        </div>
+        <p data-i18n="sections.linux.desc" class="mt-1 text-xs text-[#A1A1AA]">Terminal y sysadmin</p>
+      </a>
+      <a href="/games" class="rounded-xl border border-[#2C2C2E] bg-[#111113]/60 p-4 opacity-60 hover:bg-[#1a1a1a]/60 transition">
+        <div class="flex items-center justify-between">
+          <p data-i18n="sections.games.label" class="text-sm font-semibold text-white">Cyber x Games</p>
+          <span data-i18n="nav.soon" class="rounded-full bg-[#DF2531]/10 border border-[#DF2531]/20 px-2 py-0.5 text-[10px] text-[#DF2531]">Próximamente</span>
+        </div>
+        <p data-i18n="sections.games.desc" class="mt-1 text-xs text-[#A1A1AA]">Juegos & seguridad</p>
+      </a>
+      <a href="/projects" class="rounded-xl border border-[#2C2C2E] bg-[#111113]/60 p-4 opacity-60 hover:bg-[#1a1a1a]/60 transition">
+        <div class="flex items-center justify-between">
+          <p data-i18n="sections.projects.label" class="text-sm font-semibold text-white">Proyectos</p>
+          <span data-i18n="nav.soon" class="rounded-full bg-[#DF2531]/10 border border-[#DF2531]/20 px-2 py-0.5 text-[10px] text-[#DF2531]">Próximamente</span>
+        </div>
+        <p data-i18n="sections.projects.desc" class="mt-1 text-xs text-[#A1A1AA]">Labs y builds</p>
+      </a>
+      <a href="/curriculum" class="rounded-xl border border-[#2C2C2E] bg-[#111113]/60 p-4 opacity-60 hover:bg-[#1a1a1a]/60 transition">
+        <div class="flex items-center justify-between">
+          <p data-i18n="sections.curriculum.label" class="text-sm font-semibold text-white">Curriculum</p>
+          <span data-i18n="nav.soon" class="rounded-full bg-[#DF2531]/10 border border-[#DF2531]/20 px-2 py-0.5 text-[10px] text-[#DF2531]">Próximamente</span>
+        </div>
+        <p data-i18n="sections.curriculum.desc" class="mt-1 text-xs text-[#A1A1AA]">Progreso y evidencia</p>
+      </a>
+    </div>
+  </section>
+</MainLayout>

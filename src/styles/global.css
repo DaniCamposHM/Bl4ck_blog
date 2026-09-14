@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #030303;       /* Negro profundo 50-60% */
+  --color-surface: #2C2C2E;  /* Charcoal 15-20% */
+  --color-fg: #FFFFFF;       /* Blanco 10-15% */
+  --color-muted: #A1A1AA;    /* Gris suave 5-10% */
+  --color-accent: #7FA6A0;   /* Pastel Teal 5-10% identidad */
+  --color-danger: #DF2531;   /* Rojo 2-5% peligro */
+}
+
+:root {
+  --bg: #030303;       /* 50-60% fondo principal, header, footer */
+  --surface: #2C2C2E;  /* 15-20% cards, superficies, code, inputs */
+  --fg: #FFFFFF;       /* 10-15% texto principal, titulos */
+  --muted: #A1A1AA;    /* 5-10% texto secundario, fechas, metadata */
+  --accent: #7FA6A0;   /* 5-10% identidad: links, tags, botones, categorias */
+  --danger: #DF2531;   /* 2-5% peligro: CVEs, vulns, alertas, exploits */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Prose for markdown */
+.prose {
+  color: var(--fg);
+}
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  color: var(--fg);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.prose h1 { font-size: 2.25rem; line-height: 1.1; }
+.prose h2 { font-size: 1.5rem; margin-top: 2.5rem; border-bottom: 1px solid #2C2C2E; padding-bottom: 0.5rem; } /* Charcoal borde */
+.prose p { color: #E4E4E7; line-height: 1.75; }
+.prose a { color: var(--accent); text-decoration: none; } /* Teal links identidad */
+.prose a:hover { text-decoration: underline; color: #8fbab3; }
+.prose code { background: #2C2C2E; padding: 0.2em 0.4em; border-radius: 4px; font-size: 0.875em; color: var(--accent); } /* Charcoal fondo + Teal texto */
+.prose pre { background: #0a0a0a; border: 1px solid #2C2C2E; border-radius: 8px; padding: 1rem; overflow-x: auto; } /* Negro profundo + Charcoal borde */
+.prose pre code { background: none; padding: 0; color: #E4E4E7; }
+.prose blockquote { border-left: 3px solid var(--accent); padding-left: 1rem; color: var(--muted); font-style: italic; } /* Teal acento + Gris metadata */
+.prose ul, .prose ol { color: #E4E4E7; }
+.prose hr { border-color: #2C2C2E; } /* Charcoal */
+.prose table { width: 100%; border-collapse: collapse; }
+.prose th, .prose td { border: 1px solid #2C2C2E; padding: 0.5rem 0.75rem; text-align: left; }
+.prose th { background: #2C2C2E; color: var(--fg); } /* Charcoal header tabla + Blanco texto */
+
+/* Alertas de seguridad — Rojo 2-5% */
+.prose .alert-danger,
+.alert-danger {
+  border: 1px solid rgba(223, 37, 49, 0.3);
+  background: rgba(223, 37, 49, 0.1);
+  color: #DF2531;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+}

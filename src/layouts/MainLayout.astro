@@ -1,0 +1,55 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  noindex?: boolean;
+}
+const { title, description, image, noindex = false } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <BaseHead title={title} description={description} image={image} noindex={noindex} />
+    <ClientRouter />
+    <script is:inline>
+      (function(){
+        try {
+          var lang = localStorage.getItem('lang') || 'es';
+          document.documentElement.lang = lang;
+        } catch(e) {}
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <Navbar />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+    <script is:inline>
+      function updateMainNav() {
+        const path = location.pathname;
+        document.querySelectorAll('[data-nav-link]').forEach((el) => {
+          const href = el.getAttribute('data-nav-link');
+          const isActive = href && path.startsWith(href);
+          el.classList.toggle('bg-[#2C2C2E]', isActive);
+          el.classList.toggle('text-white', isActive);
+          el.classList.toggle('text-[#A1A1AA]', !isActive);
+          el.classList.toggle('hover:text-white', !isActive);
+          el.classList.toggle('hover:bg-[#1a1a1a]', !isActive);
+        });
+      }
+      document.addEventListener('astro:page-load', updateMainNav);
+      document.addEventListener('astro:after-swap', updateMainNav);
+      updateMainNav();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+---
+interface Props {
+  tag: string;
+  href?: string;
+  variant?: 'default' | 'danger';
+}
+const { tag, href } = Astro.props;
+// Rojo 2-5% solo para CVEs/vulns/exploits/alertas
+const isDanger = ['cve', 'vuln', 'vulnerability', 'exploit', 'rce', 'critical', 'alerta', 'peligro'].some(k => tag.toLowerCase().includes(k));
+const TagEl = href ? 'a' : 'span';
+const base = "inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-medium tracking-wide transition-colors";
+const style = isDanger
+  ? "border-[#DF2531]/30 bg-[#DF2531]/10 text-[#DF2531] hover:border-[#DF2531]/50 hover:text-white" // Rojo 2-5%
+  : "border-[#2C2C2E] bg-[#2C2C2E] px-2.5 py-1 text-[#7FA6A0] hover:border-[#7FA6A0]/40 hover:text-white"; // Charcoal fondo + Teal texto 5-10%
+---
+
+<TagEl href={href} class:list={[base, style]}>
+  #{tag}
+</TagEl>
