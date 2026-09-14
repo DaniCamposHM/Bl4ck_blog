@@ -1,0 +1,51 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-[#2C2C2E] bg-[#030303] mt-16">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-10">
+    <div class="flex flex-col md:flex-row justify-between gap-8">
+      <div class="max-w-sm">
+        <p class="font-mono text-xs tracking-widest text-white font-bold">BL4CKJACKHM</p>
+        <p data-i18n="footer.desc" class="mt-2 text-sm leading-relaxed text-[#A1A1AA]">
+          Blog de cybersecurity — investigación, práctica y documentación técnica. Aprender en público.
+        </p>
+      </div>
+      <div class="flex gap-10 text-sm">
+        <div>
+          <p data-i18n="footer.sections" class="font-medium text-white mb-3">Secciones</p>
+          <ul class="space-y-1.5 text-[#A1A1AA]">
+            <li><a href="/articles" data-i18n="nav.articles" class="hover:text-[#7FA6A0]">Artículos</a></li>
+            <li><a href="/guides" data-i18n="nav.guides" class="hover:text-[#7FA6A0]">Guías</a></li>
+            <li><a href="/writeups" class="hover:text-[#7FA6A0]">Writeups</a></li>
+            <li><a href="/research" data-i18n="nav.research" class="hover:text-[#7FA6A0]">Investigación</a></li>
+          </ul>
+        </div>
+        <div>
+          <p data-i18n="footer.more" class="font-medium text-white mb-3">Más</p>
+          <ul class="space-y-1.5 text-[#A1A1AA]">
+            <li><a href="/projects" data-i18n="nav.projects" class="hover:text-[#7FA6A0]">Proyectos</a></li>
+            <li><a href="/curriculum" data-i18n="nav.curriculum" class="hover:text-[#7FA6A0]">Curriculum</a></li>
+            <li><a href="/about" data-i18n="nav.about" class="hover:text-[#7FA6A0]">Sobre mí</a></li>
+            <li><a href="/rss.xml" class="hover:text-[#7FA6A0]">RSS</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mt-10 flex flex-col sm:flex-row justify-between gap-2 border-t border-[#2C2C2E] pt-6 text-xs text-[#A1A1AA]">
+      <span data-i18n="footer.bottom1">© {year} BL4CKJACKHM. Hecho con Astro.</span>
+      <span data-i18n="footer.bottom2" class="font-mono">Dark Editorial · Technical · Minimal</span>
+    </div>
+  </div>
+</footer>
+<script>
+  // Replace {year} placeholder after i18n
+  const el = document.querySelector('[data-i18n="footer.bottom1"]');
+  if (el) {
+    const obs = new MutationObserver(() => {
+      if (el.textContent.includes('{year}')) el.textContent = el.textContent.replace('{year}', new Date().getFullYear());
+    });
+    obs.observe(el, { childList: true, characterData: true, subtree: true });
+    if (el.textContent.includes('{year}')) el.textContent = el.textContent.replace('{year}', new Date().getFullYear());
+  }
+</script>

@@ -1,0 +1,58 @@
+---
+import MobileMenu from './MobileMenu.jsx';
+import LanguageToggle from './LanguageToggle.jsx';
+import MoreMenu from './MoreMenu.jsx';
+
+const navMain = [
+  { key: 'nav.articles', fallback: 'Artículos', href: '/articles' },
+  { key: 'nav.guides', fallback: 'Guías', href: '/guides' },
+];
+const navMore = [
+  { key: 'nav.research', fallback: 'Investigación', href: '/research' },
+  { key: 'nav.writeups', fallback: 'Writeups', href: '/writeups' },
+  { key: 'nav.linux', fallback: 'Linux', href: '/linux' },
+  { key: 'nav.games', fallback: 'Juegos', href: '/games' },
+  { key: 'nav.projects', fallback: 'Proyectos', href: '/projects' },
+];
+
+const pathname = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 border-b border-[#2C2C2E] bg-[#030303]/80 backdrop-blur-md">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 flex h-14 items-center justify-between gap-4">
+    <a href="/" class="flex items-center gap-2 font-mono text-sm font-bold tracking-widest text-white">
+      <span class="inline-flex h-7 w-7 items-center justify-center rounded bg-[#7FA6A0] text-[#030303] text-xs">BJ</span>
+      BL4CKJACKHM
+    </a>
+
+    <nav class="hidden md:flex items-center gap-1 text-sm" data-nav="main">
+      {navMain.map((item) => (
+        <a
+          href={item.href}
+          data-astro-prefetch
+          data-i18n={item.key}
+          data-nav-link={item.href}
+          class:list={[
+            "px-3 py-1.5 rounded-md transition-colors",
+            pathname.startsWith(item.href) ? "bg-[#2C2C2E] text-white" : "text-[#A1A1AA] hover:text-white hover:bg-[#1a1a1a]"
+          ]}
+        >
+          {item.fallback}
+        </a>
+      ))}
+      <MoreMenu client:load navMore={navMore} pathname={pathname} />
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a href="/search" data-astro-prefetch data-i18n="nav.search" class="hidden sm:inline-flex items-center gap-2 rounded-md border border-[#2C2C2E] bg-[#1a1a1a] px-3 py-1.5 text-xs text-[#A1A1AA] hover:text-white hover:border-[#7FA6A0]/40 transition-colors">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        Buscar
+      </a>
+      <a href="/about" data-astro-prefetch data-i18n="nav.about" class="text-xs text-[#A1A1AA] hover:text-white px-2 hidden sm:inline">Sobre mí</a>
+      <LanguageToggle client:load />
+      <div class="md:hidden">
+        <MobileMenu client:load navMain={navMain} navMore={navMore} pathname={pathname} />
+      </div>
+    </div>
+  </div>
+</header>

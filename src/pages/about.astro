@@ -1,0 +1,40 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Bl4ckJackHM — Sobre mí" description="Sobre BL4CKJACKHM — blog dedicado al hacking ético. Investigaciones y crecimiento en ciberseguridad.">
+  <section class="mx-auto max-w-3xl px-4 sm:px-6 py-12">
+    <p data-i18n="about.subtitle" class="font-mono text-xs tracking-widest text-[#7FA6A0]">Bl4ckJackHM's blog dedicado al hacking ético</p>
+    <h1 data-i18n="about.title" class="mt-2 text-3xl font-bold tracking-tight text-white">Bl4ckJackHM</h1>
+    <p data-i18n="about.p1" class="mt-4 leading-relaxed text-[#A1A1AA]">
+      Hola a todos, bienvenidos a mi blog personal. En este blog podrán ver todas mis investigaciones y mi crecimiento dentro del mundo de ciberseguridad y el hacking ético. Realizaré algunas guías, mostraré mis avances en investigaciones del día a día, pero en especial mi camino a ser un hacker ético.
+    </p>
+
+    <div class="mt-8 rounded-xl border border-[#2C2C2E] bg-[#111113] p-6">
+      <h2 data-i18n="about.treeTitle" class="text-sm font-semibold tracking-widest text-[#7FA6A0] uppercase">Árbol de contenido</h2>
+      <p data-i18n="about.treeDesc" class="mt-2 text-sm leading-relaxed text-[#A1A1AA]">
+        A continuación podrán ver el árbol de contenido de este blog:
+      </p>
+      <ul class="mt-4 space-y-2 text-sm">
+        <li><a href="/articles" data-i18n="nav.articles" class="text-[#7FA6A0] hover:underline">Artículos</a> <span class="text-[#A1A1AA]">— investigaciones y fundamentos</span></li>
+        <li><a href="/guides" data-i18n="nav.guides" class="text-[#7FA6A0] hover:underline">Guías</a> <span class="text-[#A1A1AA]">— Exegol, Archcraft, Marp Slides</span></li>
+        <li><a href="/research" data-i18n="nav.research" class="text-[#7FA6A0] hover:underline">Investigación</a> <span class="text-[#A1A1AA]">— análisis y CVEs</span></li>
+        <li><a href="/writeups" class="text-[#7FA6A0] hover:underline">Writeups</a> <span class="text-[#A1A1AA]">— labs y CTFs</span></li>
+      </ul>
+      <p class="mt-4 text-xs text-[#A1A1AA]">
+        Contenido migrado desde <a href="https://bl4ckjacks-blog.netlify.app/" target="_blank" rel="noopener" class="text-[#7FA6A0] hover:underline">bl4ckjacks-blog.netlify.app</a>
+      </p>
+    </div>
+
+    <div class="mt-8 grid gap-4 sm:grid-cols-2">
+      <a href="/curriculum" class="rounded-xl border border-[#2C2C2E] bg-[#111113] p-5 hover:bg-[#1a1a1a] transition">
+        <p data-i18n="about.curriculum" class="text-sm font-semibold text-white">Curriculum →</p>
+        <p data-i18n="about.curriculumDesc" class="text-xs text-[#A1A1AA] mt-1">Tecnologías, labs y progreso con evidencia.</p>
+      </a>
+      <a href="/projects" class="rounded-xl border border-[#2C2C2E] bg-[#111113] p-5 hover:bg-[#1a1a1a] transition">
+        <p data-i18n="about.projects" class="text-sm font-semibold text-white">Proyectos →</p>
+        <p data-i18n="about.projectsDesc" class="text-xs text-[#A1A1AA] mt-1">Home lab, herramientas y builds.</p>
+      </a>
+    </div>
+  </section>
+</MainLayout>

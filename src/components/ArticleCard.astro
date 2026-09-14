@@ -1,0 +1,33 @@
+---
+import Tag from './Tag.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date | string;
+  tags?: string[];
+  href: string;
+  collection?: string;
+}
+
+const { title, description, date, tags = [], href, collection } = Astro.props;
+const formatted = new Date(date).toLocaleDateString('es-ES', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+
+<a href={href} class="group flex flex-col rounded-xl border border-[#2C2C2E] bg-[#111113] p-5 hover:border-[#7FA6A0]/30 hover:bg-[#1a1a1a] transition-colors"> {/* Negro #030303 fondo page + Charcoal #2C2C2E borde/cards 15-20% + hover Teal #7FA6A0 5-10% */}
+  <div class="flex items-center gap-2 text-xs">
+    {collection && <span class="rounded bg-[#2C2C2E] px-2 py-0.5 font-mono tracking-wide text-[#7FA6A0] uppercase">{collection}</span>} {/* Charcoal + Teal identidad */}
+    <span class="text-[#A1A1AA]">{formatted}</span> {/* Gris 5-10% metadata */}
+  </div>
+  <h3 class="mt-3 text-base font-semibold leading-snug text-white group-hover:text-[#7FA6A0] transition-colors line-clamp-2">
+    {title}
+  </h3> {/* Blanco 10-15% titulo + hover Teal */}
+  <p class="mt-2 text-sm leading-relaxed text-[#A1A1AA] line-clamp-2">
+    {description}
+  </p> {/* Gris descripcion */}
+  {tags.length > 0 && (
+    <div class="mt-4 flex flex-wrap gap-1.5">
+      {tags.slice(0, 4).map((t) => <Tag tag={t} />)}
+    </div>
+  )}
+</a>
