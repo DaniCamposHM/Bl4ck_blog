@@ -1,0 +1,24 @@
+---
+import CredlyBadge from './CredlyBadge.astro';
+import badges from '../data/credlyBadges.json';
+
+interface Props {
+  limit?: number;
+}
+
+const { limit } = Astro.props;
+const list = typeof limit === 'number' ? badges.slice(0, limit) : badges;
+---
+
+{list.length === 0 ? (
+  <div class="rounded-xl border border-dashed border-[#2C2C2E] bg-[#111113]/50 p-8 text-center">
+    <p class="text-sm text-[#A1A1AA]" data-i18n="curriculum.badges.empty">Aún no hay badges públicos.</p>
+    <a href="https://www.credly.com/users/daniel-campos-dalence" target="_blank" rel="noopener" class="mt-2 inline-block text-xs text-[#7FA6A0] hover:underline">Ver perfil en Credly →</a>
+  </div>
+) : (
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {list.map((b) => (
+      <CredlyBadge {...b} />
+    ))}
+  </div>
+)}
