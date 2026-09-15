@@ -1,0 +1,24 @@
+[
+  {
+    "id": "9b8eb8e0-6887-45bd-9720-139491a0f5d1",
+    "name": "Introduction to the Threat Landscape 2.0",
+    "issuer": "Fortinet",
+    "issuerUrl": "https://www.credly.com/org/fortinet",
+    "image": "https://images.credly.com/images/083854d8-3a8f-465c-b414-19507f9703d9/image.png",
+    "publicUrl": "https://www.credly.com/badges/9b8eb8e0-6887-45bd-9720-139491a0f5d1/public_url",
+    "issuedAt": "2025-01-12",
+    "description": "Fundamental understanding of the cyber threat landscape — threats, threat actors and security principles.",
+    "level": "Foundational"
+  },
+  {
+    "id": "abd7771e-59c8-4cbc-974d-ce4855ba7bf0",
+    "name": "Lifelong Learning",
+    "issuer": "Certiprof",
+    "issuerUrl": "https://www.credly.com/org/certiprof",
+    "image": "https://images.credly.com/images/21e16d4d-d2df-46e6-9098-526caab49e63/blob",
+    "publicUrl": "https://www.credly.com/badges/abd7771e-59c8-4cbc-974d-ce4855ba7bf0/public_url",
+    "issuedAt": "2024-02-24",
+    "description": "Commitment to lifelong learning and continuous professional development.",
+    "level": "Foundational"
+  }
+]

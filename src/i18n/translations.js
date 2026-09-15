@@ -81,6 +81,14 @@ export const translations = {
       evidenceDesc: "Artículos, guías y writeups publicados en este blog son la evidencia de progreso. Cada entrada incluye fecha, tags y reproducibilidad.",
       viewArticles: "Ver artículos →",
       viewWriteups: "Ver writeups →",
+      badges: {
+        title: "Certificaciones",
+        subtitle: "Badges verificables emitidos en Credly — clic para validar en la fuente oficial.",
+        profile: "Perfil",
+        verify: "Verificar",
+        viewProfile: "Ver perfil completo en Credly →",
+        empty: "Aún no hay badges públicos.",
+      },
     },
     notFound: {
       error: "ERROR 404",
@@ -193,6 +201,14 @@ export const translations = {
       evidenceDesc: "Articles, guides and writeups published on this blog are the evidence of progress. Each entry includes date, tags and reproducibility.",
       viewArticles: "View articles →",
       viewWriteups: "View writeups →",
+      badges: {
+        title: "Certifications",
+        subtitle: "Verifiable badges issued on Credly — click to validate at the official source.",
+        profile: "Profile",
+        verify: "Verify",
+        viewProfile: "View full profile on Credly →",
+        empty: "No public badges yet.",
+      },
     },
     notFound: {
       error: "ERROR 404",

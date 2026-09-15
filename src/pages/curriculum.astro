@@ -1,14 +1,57 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+import CredlyGrid from '../components/CredlyGrid.astro';
 ---
 
-<MainLayout title="Curriculum — BL4CKJACKHM" description="Curriculum y progreso de BL4CKJACKHM — tecnologías, labs, proyectos y evidencia." noindex>
+<MainLayout title="Curriculum — BL4CKJACKHM" description="Curriculum y progreso de BL4CKJACKHM — certificaciones verificables en Credly, tecnologías, labs y evidencia." >
   <section class="mx-auto max-w-4xl px-4 sm:px-6 py-12">
     <h1 data-i18n="curriculum.title" class="text-3xl font-bold tracking-tight text-white">Curriculum</h1>
     <p data-i18n="curriculum.subtitle" class="mt-2 text-sm text-[#A1A1AA]">Esto sé + aquí está la evidencia.</p>
-    <div class="mt-8 rounded-xl border border-[#2C2C2E] bg-[#111113] p-8 text-center">
-      <p class="text-sm font-medium text-white">En construcción</p>
-      <p class="mt-1 text-xs text-[#A1A1AA]">Esta sección mostrará tecnologías, labs y progreso solo con material real y escrito por BL4CKJACKHM.</p>
+
+    <!-- Perfil / CTA -->
+    <div class="mt-6 flex flex-wrap items-center gap-3">
+      <a
+        href="https://www.credly.com/users/daniel-campos-dalence"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 rounded-full border border-[#2C2C2E] bg-[#111113] px-4 py-1.5 text-xs font-medium text-[#A1A1AA] hover:border-[#7FA6A0]/40 hover:text-white transition-colors"
+      >
+        <span class="h-2 w-2 rounded-full bg-[#7FA6A0]"></span>
+        <span data-i18n="curriculum.badges.profile">Perfil</span>
+        <span class="text-[#636366]">· Credly</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="opacity-60"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+      </a>
+      <span class="text-xs text-[#636366]">Badges verificables · clic para validar en fuente oficial</span>
+    </div>
+
+    <!-- Badges -->
+    <div class="mt-8">
+      <div class="flex items-end justify-between gap-4">
+        <div>
+          <h2 data-i18n="curriculum.badges.title" class="text-lg font-semibold tracking-tight text-white">Certificaciones</h2>
+          <p data-i18n="curriculum.badges.subtitle" class="mt-1 text-xs leading-relaxed text-[#A1A1AA]">Badges verificables emitidos en Credly — clic para validar en la fuente oficial.</p>
+        </div>
+      </div>
+      <div class="mt-6">
+        <CredlyGrid />
+      </div>
+      <div class="mt-6 text-center">
+        <a
+          href="https://www.credly.com/users/daniel-campos-dalence"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-i18n="curriculum.badges.viewProfile"
+          class="inline-flex items-center gap-1.5 text-xs font-medium text-[#7FA6A0] hover:text-[#8fbab3] hover:underline transition-colors"
+        >
+          Ver perfil completo en Credly →
+        </a>
+      </div>
+    </div>
+
+    <!-- Futuro: placeholder para siguientes secciones (mantener estilo) -->
+    <div class="mt-10 rounded-xl border border-dashed border-[#2C2C2E] bg-[#111113]/30 p-6 text-center">
+      <p class="text-xs font-medium text-[#A1A1AA]">Más secciones próximamente</p>
+      <p class="mt-1 text-xs text-[#636366]">Tecnologías, labs y progreso se añadirán aquí solo con material real y escrito por BL4CKJACKHM.</p>
     </div>
   </section>
 </MainLayout>

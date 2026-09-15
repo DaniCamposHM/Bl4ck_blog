@@ -72,7 +72,7 @@ export default function MoreMenu({ navMore, pathname }) {
             className={`flex items-center justify-between rounded-md px-3 py-2 text-sm ${currentPath.startsWith('/curriculum') ? 'bg-[#2C2C2E] text-white' : 'text-[#A1A1AA] hover:text-white hover:bg-[#1a1a1a]'}`}
           >
             <span>{t('nav.curriculum', 'Curriculum')}</span>
-            <span className="rounded-full bg-[#DF2531]/10 border border-[#DF2531]/20 px-2 py-0.5 text-[10px] text-[#DF2531]">{t('nav.soon', 'Próximamente')}</span>
+            <span className="h-1.5 w-1.5 rounded-full bg-[#7FA6A0]"></span>
           </a>
         </div>
       )}

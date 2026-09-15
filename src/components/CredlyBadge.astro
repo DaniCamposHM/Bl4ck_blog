@@ -1,0 +1,45 @@
+---
+interface Props {
+  id: string;
+  name: string;
+  issuer: string;
+  issuerUrl?: string;
+  image: string;
+  publicUrl: string;
+  issuedAt?: string;
+  description?: string;
+  level?: string;
+}
+
+const { name, issuer, image, publicUrl, issuedAt, description, level } = Astro.props;
+---
+
+<a
+  href={publicUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={`${name} — ${issuer} (verificar en Credly)`}
+  class="group flex flex-col items-center rounded-xl border border-[#2C2C2E] bg-[#111113] p-5 text-center transition-all hover:border-[#7FA6A0]/40 hover:bg-[#1a1a1a] hover:shadow-[0_0_20px_rgba(127,166,160,0.08)]"
+>
+  <div class="relative">
+    <img
+      src={image}
+      alt={name}
+      loading="lazy"
+      width="140"
+      height="140"
+      class="h-[140px] w-[140px] object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:scale-105"
+    />
+    {level && (
+      <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border border-[#2C2C2E] bg-[#030303] px-2 py-0.5 text-[10px] font-medium tracking-widest text-[#7FA6A0]">{level}</span>
+    )}
+  </div>
+  <h3 class="mt-5 line-clamp-2 text-sm font-semibold leading-tight text-white group-hover:text-[#7FA6A0] transition-colors">{name}</h3>
+  <p class="mt-1 text-xs text-[#A1A1AA]">{issuer}</p>
+  {description && <p class="mt-2 line-clamp-2 text-[11px] leading-relaxed text-[#A1A1AA]/80">{description}</p>}
+  {issuedAt && <p class="mt-2 text-[11px] text-[#636366]">{issuedAt}</p>}
+  <span class="mt-3 inline-flex items-center gap-1 text-[11px] font-medium tracking-wide text-[#7FA6A0] opacity-0 group-hover:opacity-100 transition-opacity">
+    Verificar
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+  </span>
+</a>
