@@ -73,7 +73,7 @@ export const translations = {
     },
     curriculum: {
       title: "Curriculum",
-      subtitle: "Esto sé + aquí está la evidencia.",
+      subtitle: "Este es mi recorrido en el mundo de la <span class=\"text-[#60A5FA] font-medium\">Ciberseguridad</span> y <span class=\"text-[#DF2531] font-medium\">hacking ético</span>",
       areas: "Áreas",
       labs: "Labs & Plataformas",
       labsDesc: "Hack The Box, TryHackMe, PortSwigger Web Security Academy, CTFs y home lab propio (Proxmox).",
@@ -88,6 +88,13 @@ export const translations = {
         verify: "Verificar",
         viewProfile: "Ver perfil completo en Credly →",
         empty: "Aún no hay badges públicos.",
+      },
+      thm: {
+        title: "TryHackMe",
+        subtitle: "Labs, rachas y badges — perfil público verificable.",
+        profile: "Perfil",
+        viewProfile: "Ver perfil en TryHackMe →",
+        empty: "Perfil nuevo — completando rooms.",
       },
     },
     notFound: {
@@ -193,7 +200,7 @@ export const translations = {
     },
     curriculum: {
       title: "Curriculum",
-      subtitle: "I know this + here is the evidence.",
+      subtitle: "This is my journey through the world of <span class=\"text-[#60A5FA] font-medium\">Cybersecurity</span> and <span class=\"text-[#DF2531] font-medium\">ethical hacking</span>",
       areas: "Areas",
       labs: "Labs & Platforms",
       labsDesc: "Hack The Box, TryHackMe, PortSwigger Web Security Academy, CTFs and own home lab (Proxmox).",
@@ -208,6 +215,13 @@ export const translations = {
         verify: "Verify",
         viewProfile: "View full profile on Credly →",
         empty: "No public badges yet.",
+      },
+      thm: {
+        title: "TryHackMe",
+        subtitle: "Labs, streaks and badges — verifiable public profile.",
+        profile: "Profile",
+        viewProfile: "View profile on TryHackMe →",
+        empty: "New profile — completing rooms.",
       },
     },
     notFound: {

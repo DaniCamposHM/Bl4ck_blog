@@ -1,36 +1,80 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import CredlyGrid from '../components/CredlyGrid.astro';
+import ThmBadge from '../components/ThmBadge.astro';
+import ThmCarousel from '../components/ThmCarousel.astro';
 ---
 
-<MainLayout title="Curriculum — BL4CKJACKHM" description="Curriculum y progreso de BL4CKJACKHM — certificaciones verificables en Credly, tecnologías, labs y evidencia." >
+<MainLayout title="Curriculum — BL4CKJACKHM" description="Curriculum y progreso de BL4CKJACKHM — certificaciones Credly y labs TryHackMe verificables, tecnologías y evidencia." >
   <section class="mx-auto max-w-4xl px-4 sm:px-6 py-12">
     <h1 data-i18n="curriculum.title" class="text-3xl font-bold tracking-tight text-white">Curriculum</h1>
-    <p data-i18n="curriculum.subtitle" class="mt-2 text-sm text-[#A1A1AA]">Esto sé + aquí está la evidencia.</p>
+    <p data-i18n="curriculum.subtitle" class="mt-2 text-sm text-[#A1A1AA]">Este es mi recorrido en el mundo de la <span class="text-[#60A5FA] font-medium">Ciberseguridad</span> y <span class="text-[#DF2531] font-medium">hacking ético</span></p>
 
-    <!-- Perfil / CTA -->
-    <div class="mt-6 flex flex-wrap items-center gap-3">
-      <a
-        href="https://www.credly.com/users/daniel-campos-dalence"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 rounded-full border border-[#2C2C2E] bg-[#111113] px-4 py-1.5 text-xs font-medium text-[#A1A1AA] hover:border-[#7FA6A0]/40 hover:text-white transition-colors"
-      >
-        <span class="h-2 w-2 rounded-full bg-[#7FA6A0]"></span>
-        <span data-i18n="curriculum.badges.profile">Perfil</span>
-        <span class="text-[#636366]">· Credly</span>
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="opacity-60"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
-      </a>
-      <span class="text-xs text-[#636366]">Badges verificables · clic para validar en fuente oficial</span>
+    <!-- Sección 1: TryHackMe (ahora primero) -->
+    <div class="mt-8 rounded-xl border border-[#2C2C2E] bg-[#111113]/40 p-6 sm:p-7">
+      <div class="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <div class="inline-flex items-center gap-2">
+            <span class="h-1.5 w-1.5 rounded-full bg-[#DF2531]"></span>
+            <span class="text-[11px] font-mono tracking-widest text-[#DF2531]">TRYHACKME</span>
+          </div>
+          <h2 data-i18n="curriculum.thm.title" class="mt-1 text-lg font-semibold tracking-tight text-white">TryHackMe</h2>
+          <p data-i18n="curriculum.thm.subtitle" class="mt-1 text-xs leading-relaxed text-[#A1A1AA]">Labs, rachas y badges — perfil público verificable.</p>
+        </div>
+        <a
+          href="https://tryhackme.com/p/Danihm"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-full border border-[#2C2C2E] bg-[#030303] px-4 py-1.5 text-xs font-medium text-[#A1A1AA] hover:border-[#DF2531]/40 hover:text-white transition-colors"
+        >
+          <span class="h-2 w-2 rounded-full bg-[#DF2531]"></span>
+          <span data-i18n="curriculum.thm.profile">Perfil</span>
+          <span class="text-[#636366]">· TryHackMe</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="opacity-60"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+        </a>
+      </div>
+      <div class="mt-6">
+        <ThmBadge />
+      </div>
+      <!-- Carrusel galería -->
+      <div class="mt-6 pt-6 border-t border-[#2C2C2E]">
+        <ThmCarousel />
+      </div>
+      <div class="mt-6 text-center">
+        <a
+          href="https://tryhackme.com/p/Danihm"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-i18n="curriculum.thm.viewProfile"
+          class="inline-flex items-center gap-1.5 text-xs font-medium text-[#DF2531] hover:text-[#ff4d5a] hover:underline transition-colors"
+        >
+          Ver perfil en TryHackMe →
+        </a>
+      </div>
     </div>
 
-    <!-- Badges -->
-    <div class="mt-8">
-      <div class="flex items-end justify-between gap-4">
+    <!-- Sección 2: Credly -->
+    <div class="mt-6 rounded-xl border border-[#2C2C2E] bg-[#111113]/40 p-6 sm:p-7">
+      <div class="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h2 data-i18n="curriculum.badges.title" class="text-lg font-semibold tracking-tight text-white">Certificaciones</h2>
+          <div class="inline-flex items-center gap-2">
+            <span class="h-1.5 w-1.5 rounded-full bg-[#7FA6A0]"></span>
+            <span class="text-[11px] font-mono tracking-widest text-[#7FA6A0]">CREDLY</span>
+          </div>
+          <h2 data-i18n="curriculum.badges.title" class="mt-1 text-lg font-semibold tracking-tight text-white">Certificaciones</h2>
           <p data-i18n="curriculum.badges.subtitle" class="mt-1 text-xs leading-relaxed text-[#A1A1AA]">Badges verificables emitidos en Credly — clic para validar en la fuente oficial.</p>
         </div>
+        <a
+          href="https://www.credly.com/users/daniel-campos-dalence"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-full border border-[#2C2C2E] bg-[#030303] px-4 py-1.5 text-xs font-medium text-[#A1A1AA] hover:border-[#7FA6A0]/40 hover:text-white transition-colors"
+        >
+          <span class="h-2 w-2 rounded-full bg-[#7FA6A0]"></span>
+          <span data-i18n="curriculum.badges.profile">Perfil</span>
+          <span class="text-[#636366]">· Credly</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="opacity-60"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+        </a>
       </div>
       <div class="mt-6">
         <CredlyGrid />
@@ -48,8 +92,8 @@ import CredlyGrid from '../components/CredlyGrid.astro';
       </div>
     </div>
 
-    <!-- Futuro: placeholder para siguientes secciones (mantener estilo) -->
-    <div class="mt-10 rounded-xl border border-dashed border-[#2C2C2E] bg-[#111113]/30 p-6 text-center">
+    <!-- Placeholder futuro -->
+    <div class="mt-6 rounded-xl border border-dashed border-[#2C2C2E] bg-[#111113]/30 p-6 text-center">
       <p class="text-xs font-medium text-[#A1A1AA]">Más secciones próximamente</p>
       <p class="mt-1 text-xs text-[#636366]">Tecnologías, labs y progreso se añadirán aquí solo con material real y escrito por BL4CKJACKHM.</p>
     </div>
