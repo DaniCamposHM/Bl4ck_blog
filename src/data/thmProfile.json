@@ -1,0 +1,25 @@
+{
+  "username": "Danihm",
+  "publicUrl": "https://tryhackme.com/p/Danihm",
+  "sharerId": "648df5009e954d005f6d146e",
+  "badgeShareUrl": "https://tryhackme.com/Danihm/badges/terminaled",
+  "fetchedAt": "2026-09-15",
+  "stats": {
+    "rank": null,
+    "streak": null,
+    "badges": 1,
+    "completedRooms": 1,
+    "level": null,
+    "avatar": null
+  },
+  "note": "Perfil nuevo personal — stats agregados se sincronizan via scripts/sync-thm.mjs (api/v2/badges/public-profile). Por ahora se muestra badge Terminaled verificado. Actualiza con node scripts/sync-thm.mjs cuando THM exponga el iframe.",
+  "badges": [
+    {
+      "name": "Terminaled",
+      "slug": "terminaled",
+      "url": "https://tryhackme.com/Danihm/badges/terminaled",
+      "publicUrl": "https://tryhackme.com/Danihm/badges/terminaled?utm_campaign=social_share&utm_medium=social&utm_content=badge&utm_source=copy&sharerId=648df5009e954d005f6d146e",
+      "issuer": "TryHackMe"
+    }
+  ]
+}

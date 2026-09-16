@@ -1,0 +1,59 @@
+---
+import thm from '../data/thmProfile.json';
+
+const stats = thm.stats || {};
+const hasLive = stats.rank !== null || stats.streak !== null;
+
+// helpers for display
+const rankText = stats.rank ? `#${stats.rank.toLocaleString('es-ES')}` : '—';
+const streakText = stats.streak || '—';
+const roomsText = stats.completedRooms != null ? String(stats.completedRooms) : '—';
+const badgesText = stats.badges != null ? String(stats.badges) : '—';
+const levelText = stats.level || 'En crecimiento';
+---
+
+<div class="rounded-xl border border-[#2C2C2E] bg-[#111113] overflow-hidden">
+  <!-- Header -->
+  <div class="flex items-center gap-4 p-5 border-b border-[#2C2C2E]">
+    <div class="h-14 w-14 shrink-0 overflow-hidden rounded-full border border-[#2C2C2E] bg-[#030303] flex items-center justify-center">
+      {stats.avatar ? (
+        <img src={stats.avatar} alt={thm.username} width="56" height="56" loading="lazy" class="h-full w-full object-cover" />
+      ) : (
+        <span class="font-mono text-sm font-bold tracking-widest text-[#7FA6A0]">{thm.username.slice(0,2).toUpperCase()}</span>
+      )}
+    </div>
+    <div class="min-w-0">
+      <div class="flex items-center gap-2">
+        <a href={thm.publicUrl} target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-white hover:text-[#7FA6A0] transition-colors">{thm.username}</a>
+        <span class="rounded-full border border-[#2C2C2E] bg-[#030303] px-2 py-0.5 text-[10px] font-medium tracking-widest text-[#A1A1AA]">{levelText}</span>
+      </div>
+      <a href={thm.publicUrl} target="_blank" rel="noopener noreferrer" class="text-xs text-[#A1A1AA] hover:text-[#7FA6A0] hover:underline break-all">{thm.publicUrl}</a>
+    </div>
+    <a href={thm.publicUrl} target="_blank" rel="noopener noreferrer" class="ml-auto hidden sm:inline-flex items-center gap-1.5 rounded-full border border-[#2C2C2E] bg-[#030303] px-3 py-1 text-xs font-medium text-[#A1A1AA] hover:border-[#7FA6A0]/40 hover:text-white transition-colors">
+      Perfil
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+    </a>
+  </div>
+
+  <!-- Stats grid -->
+  <div class="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y divide-[#2C2C2E] bg-[#0a0a0a]/50">
+    <div class="p-4 text-center">
+      <p class="text-[10px] font-mono tracking-widest text-[#636366]">RANK</p>
+      <p class="mt-1 text-sm font-semibold text-white">{rankText}</p>
+    </div>
+    <div class="p-4 text-center">
+      <p class="text-[10px] font-mono tracking-widest text-[#636366]">STREAK</p>
+      <p class="mt-1 text-sm font-semibold text-white">{streakText}</p>
+    </div>
+    <div class="p-4 text-center">
+      <p class="text-[10px] font-mono tracking-widest text-[#636366]">ROOMS</p>
+      <p class="mt-1 text-sm font-semibold text-white">{roomsText}</p>
+    </div>
+    <div class="p-4 text-center">
+      <p class="text-[10px] font-mono tracking-widest text-[#636366]">BADGES</p>
+      <p class="mt-1 text-sm font-semibold text-white">{badgesText}</p>
+    </div>
+  </div>
+
+  <!-- Badges carousel will be injected externally via ThmCarousel; keep minimal note here -->
+</div>

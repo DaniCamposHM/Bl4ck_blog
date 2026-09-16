@@ -16,7 +16,9 @@ function applyTranslations(lang) {
     if (typeof val === 'string') {
       // support {year} placeholder
       if (val.includes('{year}')) val = val.replace('{year}', new Date().getFullYear());
-      el.textContent = val;
+      // allow HTML for colored subtitles (Ciberseguridad / hacking ético)
+      if (val.includes('<span')) el.innerHTML = val;
+      else el.textContent = val;
     }
   });
   // placeholders
